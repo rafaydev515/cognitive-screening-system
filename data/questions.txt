@@ -1,0 +1,338 @@
+# SciCo Brain Screening System — Question Bank v2 (Universal Language)
+# Format Guide:
+#   [SECTION]  name
+#   [Q]        number|question text
+#   [OPT]      letter|option label text
+#   [SCORE]    PH|SS|EX|ST
+# Each [OPT] is immediately followed by its [SCORE] on the next line.
+# Blank lines separate questions for readability.
+# Lines starting with # are comments — skip them in your parser.
+
+# ─────────────────────────────────────────
+[SECTION] PATTERN HUNTER
+# ─────────────────────────────────────────
+
+[Q] 1|Q1.You buy a new phone. Before using it, what do you do?
+[OPT] A|Go through every setting and menu one by one to understand it fully.
+[SCORE] 5|0|0|0
+[OPT] B|Ask a friend or family member who already has the same phone.
+[SCORE] 0|4|0|1
+[OPT] C|Just start pressing things and figure it out along the way.
+[SCORE] 0|0|5|0
+[OPT] D|Only learn how to do the one or two things I actually need right now.
+[SCORE] 0|0|1|4
+[OPT] E|Watch a YouTube video or read a guide before touching anything.
+[SCORE] 3|0|0|2
+
+[Q] 2|Q2.You wrote a message and already sent it. Then you notice a spelling mistake in it. What do you do?
+[OPT] A|It bothers me immediately and I send a correction right away.
+[SCORE] 5|0|0|0
+[OPT] B|It bothers me a little but I think about whether correcting it would be more awkward.
+[SCORE] 1|2|0|2
+[OPT] C|I notice it, fix it quickly if I can, then forget about it.
+[SCORE] 1|0|3|1
+[OPT] D|I only care if the mistake actually confused the other person.
+[SCORE] 0|4|0|1
+[OPT] E|I notice it but move on — it is sent, nothing to do now.
+[SCORE] 0|0|0|5
+
+[Q] 3|Q3.You are watching a movie with others and you spot a mistake in the story — like a character who was injured suddenly running fine. What do you do?
+[OPT] A|I point it out immediately — I cannot just sit with it.
+[SCORE] 5|0|0|0
+[OPT] B|I notice it but stay quiet so I do not interrupt everyone.
+[SCORE] 3|2|0|0
+[OPT] C|I mention it quickly then get back to watching.
+[SCORE] 1|1|2|1
+[OPT] D|I usually do not notice these things unless they are very obvious.
+[SCORE] 0|0|3|2
+[OPT] E|I notice but I am already wondering what happens next in the story.
+[SCORE] 0|0|4|1
+
+[Q] 4|Q4.When you learn how to do something new — like a recipe, a game, or a new skill — what feels most satisfying?
+[OPT] A|Understanding exactly why each step works, not just following the steps blindly.
+[SCORE] 5|0|0|0
+[OPT] B|Being able to teach it to someone else afterwards.
+[SCORE] 0|5|0|0
+[OPT] C|Trying it out immediately even before fully understanding it.
+[SCORE] 0|0|4|1
+[OPT] D|Knowing I can now do it the same way reliably every time.
+[SCORE] 0|0|0|5
+[OPT] E|Connecting it to something I already knew how to do.
+[SCORE] 3|0|0|2
+
+[Q] 5|Q5.You have two free hours with nothing planned. What do you actually end up doing?
+[OPT] A|Reading about or watching something on a topic that has been on my mind.
+[SCORE] 5|0|0|0
+[OPT] B|Calling or meeting up with someone I have not spoken to in a while.
+[SCORE] 0|5|0|0
+[OPT] C|Trying something I kept saying I would do but never got around to.
+[SCORE] 0|0|5|0
+[OPT] D|Doing something familiar and relaxing that I know I enjoy.
+[SCORE] 0|0|0|5
+[OPT] E|It honestly depends on my mood — no real pattern.
+[SCORE] 1|1|2|1
+
+# ─────────────────────────────────────────
+[SECTION] SOCIAL SMART
+# ─────────────────────────────────────────
+
+[Q] 6|Q6.A friend cancels plans with you at the last minute and just says something came up. How do you feel inside?
+[OPT] A|I immediately wonder if something is wrong with them.
+[SCORE] 0|5|0|0
+[OPT] B|Slightly annoyed but I try to think of a logical reason they might have.
+[SCORE] 3|0|0|2
+[OPT] C|Honestly fine — it just frees up my time.
+[SCORE] 0|0|5|0
+[OPT] D|Uncomfortable — I had already planned my day around this.
+[SCORE] 0|0|0|5
+[OPT] E|Nothing strong — I take it as it is and move on.
+[SCORE] 1|1|2|1
+
+[Q] 7|Q7.You are in a group conversation and someone says something that you know is factually wrong. What do you do?
+[OPT] A|Correct them directly — getting the right information out matters more.
+[SCORE] 5|0|0|0
+[OPT] B|Correct them but in a gentle way so they do not feel embarrassed.
+[SCORE] 0|5|0|0
+[OPT] C|Bring it up with them privately later if it really matters.
+[SCORE] 0|3|0|2
+[OPT] D|Let it go unless it is causing actual harm.
+[SCORE] 0|1|2|2
+[OPT] E|Steer the conversation toward the right answer without directly calling them out.
+[SCORE] 1|4|0|0
+
+[Q] 8|Q8.You are sitting with a group of people and you notice one person has gone quiet and looks a little off. Nobody else seems to notice. What do you do?
+[OPT] A|I notice straight away and check on them privately after.
+[SCORE] 0|5|0|0
+[OPT] B|I notice but wait to see if they bring it up themselves.
+[SCORE] 2|2|0|1
+[OPT] C|I stay focused on the group — their feelings are their own business.
+[SCORE] 3|0|0|2
+[OPT] D|I notice but feel unsure what to do so I do nothing.
+[SCORE] 0|2|0|3
+[OPT] E|I probably would not have noticed unless it was really obvious.
+[SCORE] 1|0|3|1
+
+[Q] 9|Q9.A friend or family member comes to you with a problem they are struggling with. What do you naturally focus on first?
+[OPT] A|Finding the most practical and correct solution for them.
+[SCORE] 4|0|0|1
+[OPT] B|Making sure they feel heard and understood before anything else.
+[SCORE] 0|5|0|0
+[OPT] C|Getting them to a solution as fast as possible.
+[SCORE] 0|0|4|1
+[OPT] D|Suggesting something that has worked before in similar situations.
+[SCORE] 0|0|0|5
+[OPT] E|Understanding why they are stuck before trying to help.
+[SCORE] 3|2|0|0
+
+[Q] 10|Q10.After a long day of being around a lot of people — family gathering, outing, social event — how do you usually feel?
+[OPT] A|Drained and needing some quiet time alone to recover.
+[SCORE] 3|0|0|2
+[OPT] B|Good and satisfied — being around people gives me energy.
+[SCORE] 0|5|0|0
+[OPT] C|Stimulated and buzzing — especially if the conversations were interesting.
+[SCORE] 1|1|3|0
+[OPT] D|Relieved it is over — I find large social events exhausting.
+[SCORE] 4|0|0|1
+[OPT] E|It really depends on the people and the quality of the time spent.
+[SCORE] 0|3|1|1
+
+# ─────────────────────────────────────────
+[SECTION] EXPLORER
+# ─────────────────────────────────────────
+
+[Q] 11|Q11.You are going somewhere new for a week — a city, a town, anywhere you have never been. How do you approach it?
+[OPT] A|Research it thoroughly before I go — places, food, things to do.
+[SCORE] 4|0|0|1
+[OPT] B|Ask people who have been there what they personally recommend.
+[SCORE] 0|4|1|0
+[OPT] C|Just go and figure it out when I get there — that is the fun part.
+[SCORE] 0|0|5|0
+[OPT] D|Follow a well-reviewed plan that others have already tested.
+[SCORE] 0|0|0|5
+[OPT] E|Have a rough idea of a few things but keep most of it open.
+[SCORE] 1|0|3|1
+
+[Q] 12|Q12.You have been working on something for a while — a project, a plan, anything — and suddenly the whole direction changes. How do you react?
+[OPT] A|Frustrated — I now have to re-understand everything from scratch.
+[SCORE] 4|0|0|1
+[OPT] B|I first check in with the people around me to see how they are handling it.
+[SCORE] 0|4|0|1
+[OPT] C|Slightly excited — change usually opens up new possibilities.
+[SCORE] 0|0|5|0
+[OPT] D|Stressed — I had built a whole routine around the original direction.
+[SCORE] 0|0|0|5
+[OPT] E|Neutral — I just adjust and keep going.
+[SCORE] 1|1|2|1
+
+[Q] 13|Q13.Someone asks you to do something but gives you zero instructions and complete freedom to do it however you want. How do you feel?
+[OPT] A|Energized — I will figure out a structure and explore from there.
+[SCORE] 3|0|2|0
+[OPT] B|Fine — but I would check with them first to understand what they are actually expecting.
+[SCORE] 0|4|0|1
+[OPT] C|Happy — having full freedom is when I do my best.
+[SCORE] 0|0|5|0
+[OPT] D|Uneasy — I work better when I know exactly what a good result looks like.
+[SCORE] 0|0|0|5
+[OPT] E|A little unsure at first but willing to give it a go.
+[SCORE] 1|1|2|1
+
+[Q] 14|Q14.When you look back at decisions in your life that you regret, they are usually:
+[OPT] A|Decisions I made without thinking things through properly first.
+[SCORE] 4|0|0|1
+[OPT] B|Decisions where I chose what was logical but hurt someone in the process.
+[SCORE] 0|4|0|1
+[OPT] C|Decisions where I played it safe and missed out on something.
+[SCORE] 0|0|5|0
+[OPT] D|Decisions where I changed something that was working fine.
+[SCORE] 0|0|0|5
+[OPT] E|I do not really have a clear pattern in the things I regret.
+[SCORE] 1|1|2|1
+
+[Q] 15|Q15.If you watch yourself through a normal day, how would you describe the way your attention moves?
+[OPT] A|I lock onto one thing for a long time and go very deep into it.
+[SCORE] 5|0|0|0
+[OPT] B|I keep getting pulled toward checking in with people or seeing how others are doing.
+[SCORE] 0|4|1|0
+[OPT] C|I jump between several things at once — I find it hard to stick to just one.
+[SCORE] 0|0|5|0
+[OPT] D|I finish one thing completely before moving to the next.
+[SCORE] 0|0|0|5
+[OPT] E|It shifts depending on the day — no fixed pattern.
+[SCORE] 2|0|1|2
+
+# ─────────────────────────────────────────
+[SECTION] STABILIZER
+# ─────────────────────────────────────────
+
+[Q] 16|Q16.Which of these best describes where you feel most comfortable spending your time?
+[OPT] A|Alone, working through something complex and mentally challenging.
+[SCORE] 5|0|0|0
+[OPT] B|Around people, talking, collaborating, helping.
+[SCORE] 0|5|0|0
+[OPT] C|In situations that keep changing and give me new things to deal with.
+[SCORE] 0|0|5|0
+[OPT] D|In a calm, familiar routine where I know what to expect each day.
+[SCORE] 0|0|0|5
+[OPT] E|Anywhere really — I adapt easily to different environments.
+[SCORE] 1|1|2|1
+
+[Q] 17|Q17.You have something important happening tomorrow — an interview, exam, presentation, or big event. What do you do tonight?
+[OPT] A|Go over everything one more time to make sure I have not missed anything.
+[SCORE] 4|0|0|1
+[OPT] B|Talk to someone close to me about how I am feeling.
+[SCORE] 0|5|0|0
+[OPT] C|Not think about it much — I do better when I just go with the moment.
+[SCORE] 0|0|5|0
+[OPT] D|Lay out everything I need, do a final check, then sleep at my normal time.
+[SCORE] 0|0|0|5
+[OPT] E|Do a bit of light preparation then distract myself for the rest of the evening.
+[SCORE] 1|1|1|2
+
+[Q] 18|Q18.Someone close to you tells you honestly that you have a habit they think is holding you back. What is your first internal reaction?
+[OPT] A|I immediately think about whether what they said is actually true or not.
+[SCORE] 5|0|0|0
+[OPT] B|I feel it emotionally first before I start thinking about whether they are right.
+[SCORE] 0|4|0|1
+[OPT] C|I take it in and feel open to it — honest feedback is useful.
+[SCORE] 0|1|3|1
+[OPT] D|It unsettles me — I need time before I can process it properly.
+[SCORE] 0|1|0|4
+[OPT] E|My reaction depends on who said it and how they said it.
+[SCORE] 1|2|1|1
+
+[Q] 19|Q19.When you make plans with the people in your life, which of these sounds most like you?
+[OPT] A|I am fine with plans but I could just as easily spend the time alone.
+[SCORE] 3|0|0|2
+[OPT] B|Who I am spending time with matters much more to me than what we are doing.
+[SCORE] 0|5|0|0
+[OPT] C|I love last-minute plans — the spontaneous ones are usually the best.
+[SCORE] 0|0|5|0
+[OPT] D|I like plans to be clear, confirmed, and not changed at the last minute.
+[SCORE] 0|0|0|5
+[OPT] E|A general plan is enough — I am fine if things shift a little.
+[SCORE] 1|1|2|1
+
+[Q] 20|Q20.When you are about to do something that might not go well — a difficult conversation, a new challenge, an uncertain outcome — how do you usually approach it?
+[OPT] A|I think it through carefully and weigh the chances before deciding.
+[SCORE] 5|0|0|0
+[OPT] B|I think about how it will affect the other people involved.
+[SCORE] 0|4|0|1
+[OPT] C|I go for it — the risk is part of what makes it worth doing.
+[SCORE] 0|0|5|0
+[OPT] D|I look for a way to reduce the risk as much as possible before proceeding.
+[SCORE] 0|0|0|5
+[OPT] E|It depends on how much is at stake.
+[SCORE] 2|0|1|2
+
+# ─────────────────────────────────────────
+[SECTION] CROSS-DIMENSIONAL
+# ─────────────────────────────────────────
+
+[Q] 21|Q21.You end up working closely with someone whose way of doing things is completely different from yours. After a month, what is most likely to have happened?
+[OPT] A|I spent time analyzing how our differences help and hurt the work.
+[SCORE] 4|1|0|0
+[OPT] B|I made a real effort to understand how they think and what matters to them.
+[SCORE] 0|5|0|0
+[OPT] C|I found the clash of styles interesting — it usually leads somewhere better.
+[SCORE] 0|0|5|0
+[OPT] D|I made sure we each had clearly defined roles so our styles did not clash.
+[SCORE] 0|0|0|5
+[OPT] E|I just adjusted to whatever kept things running smoothly.
+[SCORE] 1|2|1|1
+
+[Q] 22|Q22.You are faced with a problem that nobody around you has dealt with before — no guide, no answer, no example to follow. How do you start?
+[OPT] A|I write out what I know, what I do not know, and build a plan from there.
+[SCORE] 5|0|0|0
+[OPT] B|I talk to people who have faced anything remotely similar and learn from them.
+[SCORE] 0|4|0|1
+[OPT] C|I just start trying things and learn from what does and does not work.
+[SCORE] 0|0|5|0
+[OPT] D|I look for the closest solution that already exists and adjust it.
+[SCORE] 0|0|0|5
+[OPT] E|I step away and let my mind work on it quietly before doing anything.
+[SCORE] 3|0|1|1
+
+[Q] 23|Q23.What kind of situation tends to genuinely frustrate you in daily life?
+[OPT] A|People around me being careless or sloppy when more care was clearly possible.
+[SCORE] 5|0|0|0
+[OPT] B|Being in a place or group where nobody seems to care about how people are actually feeling.
+[SCORE] 0|5|0|0
+[OPT] C|Doing the same things over and over with no room to try something different.
+[SCORE] 0|0|5|0
+[OPT] D|Things changing constantly with no stability or clear direction.
+[SCORE] 0|0|0|5
+[OPT] E|I do not really have a specific thing that consistently frustrates me.
+[SCORE] 1|1|2|1
+
+[Q] 24|Q24.Two opportunities come your way at the same time. The first is safer and more predictable but less exciting. The second is uncertain and undefined but potentially much more interesting. Which way do you lean?
+[OPT] A|Toward the safer one — but only after carefully comparing both options.
+[SCORE] 3|0|0|2
+[OPT] B|I would first want to know more about the people involved in each.
+[SCORE] 0|5|0|0
+[OPT] C|Toward the uncertain one — the potential makes it worth the risk.
+[SCORE] 0|0|5|0
+[OPT] D|Toward the safer one — knowing what to expect has real value.
+[SCORE] 0|0|0|5
+[OPT] E|I would genuinely struggle to decide and probably overthink both.
+[SCORE] 3|0|1|1
+
+[Q] 25|Q25.Think about the version of yourself you feel most disappointed in. Which of these describes that version?
+[OPT] A|The one who settled for something being good enough when it could have been done properly.
+[SCORE] 5|0|0|0
+[OPT] B|The one who was right about something but handled it in a way that hurt someone.
+[SCORE] 0|5|0|0
+[OPT] C|The one who took the safe road out of fear instead of going for what they actually wanted.
+[SCORE] 0|0|5|0
+[OPT] D|The one who changed something that was working fine and made things worse.
+[SCORE] 0|0|0|5
+[OPT] E|I do not really have a version of myself I feel consistently disappointed in.
+[SCORE] 1|1|2|1
+
+# ─────────────────────────────────────────
+# SCORING THRESHOLDS (for reference in code)
+# ─────────────────────────────────────────
+# MAX_SCORE        125   (per dimension)
+# DOMINANT         70    (single dimension >= 70 = dominant profile)
+# DUAL             60    (two dimensions both >= 60 = dual profile)
+# MIXED            any   (no dimension >= 70 = mixed/flexible profile)
+# ─────────────────────────────────────────
