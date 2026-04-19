@@ -324,43 +324,43 @@ public:
 
 // PH dominant
         if (d == PATTERN_HUNTER && s == SOCIAL_SMART)
-            interpretation += "\n\t\t\tStrategic Communicator — You combine logic with social awareness.";
+            interpretation += "\n\t\t\tStrategic Communicator - You combine logic with social awareness.";
 
         else if (d == PATTERN_HUNTER && s == EXPLORER)
-            interpretation += "\n\t\t\tAnalytical Explorer — You seek patterns while exploring new ideas.";
+            interpretation += "\n\t\t\tAnalytical Explorer - You seek patterns while exploring new ideas.";
 
         else if (d == PATTERN_HUNTER && s == STABILIZER)
-            interpretation += "\n\t\t\tStructured Thinker — You value logic with stability.";
+            interpretation += "\n\t\t\tStructured Thinker - You value logic with stability.";
 
 // SS dominant
         else if (d == SOCIAL_SMART && s == PATTERN_HUNTER)
-            interpretation += "\n\t\t\tEmpathic Analyst — You read people deeply and back it with sharp logical thinking.";
+            interpretation += "\n\t\t\tEmpathic Analyst - You read people deeply and back it with sharp logical thinking.";
 
         else if (d == SOCIAL_SMART && s == EXPLORER)
-            interpretation += "\n\t\t\tAdaptive Connector — You explore through people and interaction.";
+            interpretation += "\n\t\t\tAdaptive Connector - You explore through people and interaction.";
 
         else if (d == SOCIAL_SMART && s == STABILIZER)
-            interpretation += "\n\t\t\tSupportive Organizer — You balance people and structure.";
+            interpretation += "\n\t\t\tSupportive Organizer - You balance people and structure.";
 
 // EX dominant
         else if (d == EXPLORER && s == PATTERN_HUNTER)
-            interpretation += "\n\t\t\tCurious Investigator — You experiment freely but always search for the underlying logic.";
+            interpretation += "\n\t\t\tCurious Investigator - You experiment freely but always search for the underlying logic.";
 
         else if (d == EXPLORER && s == SOCIAL_SMART)
-            interpretation += "\n\t\t\tCreative Collaborator — You chase new ideas and bring others along with you.";
+            interpretation += "\n\t\t\tCreative Collaborator - You chase new ideas and bring others along with you.";
 
         else if (d == EXPLORER && s == STABILIZER)
-            interpretation += "\n\t\t\tBalanced Executor — You explore but maintain control and consistency.";
+            interpretation += "\n\t\t\tBalanced Executor - You explore but maintain control and consistency.";
 
 // ST dominant
         else if (d == STABILIZER && s == PATTERN_HUNTER)
-            interpretation += "\n\t\t\tPrecise Planner — You build reliable systems grounded in deep analytical thinking.";
+            interpretation += "\n\t\t\tPrecise Planner - You build reliable systems grounded in deep analytical thinking.";
 
         else if (d == STABILIZER && s == SOCIAL_SMART)
-            interpretation += "\n\t\t\tSteady Supporter — You create safe, consistent environments where people feel secure.";
+            interpretation += "\n\t\t\tSteady Supporter - You create safe, consistent environments where people feel secure.";
 
         else if (d == STABILIZER && s == EXPLORER)
-            interpretation += "\n\t\t\tCautious Innovator — You are open to new ideas but only move when the ground feels solid.";
+            interpretation += "\n\t\t\tCautious Innovator - You are open to new ideas but only move when the ground feels solid.";
 
         else
             interpretation += "\n\t\t\tUnique combination of traits.";
