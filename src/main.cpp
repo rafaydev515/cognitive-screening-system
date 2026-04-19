@@ -136,11 +136,11 @@ public:
     }
 };
 void printRawScores(const TraitProfile& profile) {
-    cout << "\nRaw Trait Scores:\n";
-    cout << "Pattern Hunter: " << profile.getPatternHunter() << endl;
-    cout << "Social Smart: " << profile.getSocialSmart() << endl;
-    cout << "Explorer: " << profile.getExplorer() << endl;
-    cout << "Stabilizer: " << profile.getStabilizer() << endl;
+    cout << "\n\t\tRaw Trait Scores:\n";
+    cout << "\t\t\tPattern Hunter: " << profile.getPatternHunter() << endl;
+    cout << "\t\t\tSocial Smart: " << profile.getSocialSmart() << endl;
+    cout << "\t\t\tExplorer: " << profile.getExplorer() << endl;
+    cout << "\t\t\tStabilizer: " << profile.getStabilizer() << endl;
 }
 
 class NormalizedProfile
@@ -253,41 +253,33 @@ class ClassificationEngine {
 
     public:
 
-    ClassificationResult classify(NormalizedProfile& profile) {
+    ClassificationResult classify( NormalizedProfile& profile) {
 
     vector<pair<Trait, double>> scores = {
         {PATTERN_HUNTER, profile.getPatternHunter()},
-        {SOCIAL_SMART, profile.getSocialSmart()},
-        {EXPLORER, profile.getExplorer()},
-        {STABILIZER, profile.getStabilizer()}
+        {SOCIAL_SMART,   profile.getSocialSmart()},
+        {EXPLORER,       profile.getExplorer()},
+        {STABILIZER,     profile.getStabilizer()}
     };
 
-    int count65 = 0;
-    int count55 = 0;
+    sort(scores.begin(), scores.end(),
+        [](const auto& a, const auto& b) {
+            return a.second > b.second;
+        });
 
-    for (auto& s : scores) {
+    int count65 = 0, count55 = 0;
+    for (const auto& s : scores) {
         if (s.second >= 65) count65++;
         if (s.second >= 55) count55++;
     }
 
-    sort(scores.begin(), scores.end(),
-        [](auto& a, auto& b) {
-            return a.second > b.second;
-        });
-
-    Trait dominant = scores[0].first;
-    Trait secondary = scores[1].first;
-
     string profileType;
+    if      (count65 >= 3) profileType = "Triad";
+    else if (count65 >= 1) profileType = "Dominant";
+    else if (count55 >= 2) profileType = "Dual";
+    else                   profileType = "Mixed";
 
-    if (count55 >= 2)
-        profileType = "Dual";
-    else if (count65 >= 1)
-        profileType = "Dominant";
-    else
-        profileType = "Mixed";
-
-    return {dominant, secondary, profileType};
+    return {scores[0].first, scores[1].first, profileType};
 }
 };
 
@@ -327,23 +319,45 @@ public:
 
         interpretation += "\nYour cognitive style: ";
 
+// PH dominant
         if (d == PATTERN_HUNTER && s == SOCIAL_SMART)
-            interpretation += "Strategic Communicator – You combine logic with social awareness.";
+            interpretation += "Strategic Communicator — You combine logic with social awareness.";
 
         else if (d == PATTERN_HUNTER && s == EXPLORER)
-            interpretation += "Analytical Explorer – You seek patterns while exploring new ideas.";
+            interpretation += "Analytical Explorer — You seek patterns while exploring new ideas.";
 
         else if (d == PATTERN_HUNTER && s == STABILIZER)
-            interpretation += "Structured Thinker – You value logic with stability.";
+            interpretation += "Structured Thinker — You value logic with stability.";
+
+// SS dominant
+        else if (d == SOCIAL_SMART && s == PATTERN_HUNTER)
+            interpretation += "Empathic Analyst — You read people deeply and back it with sharp logical thinking.";
 
         else if (d == SOCIAL_SMART && s == EXPLORER)
-            interpretation += "Adaptive Connector – You explore through people and interaction.";
+            interpretation += "Adaptive Connector — You explore through people and interaction.";
 
         else if (d == SOCIAL_SMART && s == STABILIZER)
-            interpretation += "Supportive Organizer – You balance people and structure.";
+            interpretation += "Supportive Organizer — You balance people and structure.";
+
+// EX dominant
+        else if (d == EXPLORER && s == PATTERN_HUNTER)
+            interpretation += "Curious Investigator — You experiment freely but always search for the underlying logic.";
+
+        else if (d == EXPLORER && s == SOCIAL_SMART)
+            interpretation += "Creative Collaborator — You chase new ideas and bring others along with you.";
 
         else if (d == EXPLORER && s == STABILIZER)
-            interpretation += "Balanced Executor – You explore but maintain control and consistency.";
+            interpretation += "Balanced Executor — You explore but maintain control and consistency.";
+
+// ST dominant
+        else if (d == STABILIZER && s == PATTERN_HUNTER)
+            interpretation += "Precise Planner — You build reliable systems grounded in deep analytical thinking.";
+
+        else if (d == STABILIZER && s == SOCIAL_SMART)
+            interpretation += "Steady Supporter — You create safe, consistent environments where people feel secure.";
+
+        else if (d == STABILIZER && s == EXPLORER)
+            interpretation += "Cautious Innovator — You are open to new ideas but only move when the ground feels solid.";
 
         else
             interpretation += "Unique combination of traits.";
@@ -406,7 +420,7 @@ public:
             }
             else if (line.rfind("[OPT]", 0) == 0) {
                     string content = line.substr(6);
-                    int pos = content.find('|');
+                    size_t pos = content.find('|');
 
                     if (pos != string::npos)
                     currentOptionText = content.substr(pos + 1);
@@ -454,7 +468,9 @@ class ScreeningSystem {
         TraitProfile profile;
 
     public:
+
         void run();
+            
 };
 void ScreeningSystem::run() {
     questions = loader.loadQuestions("data/questions.txt");
@@ -466,18 +482,18 @@ void ScreeningSystem::run() {
 
 
     for (auto& q : questions) {
-        cout << "\n" << q.getText() << endl;
+        cout << "\n\n\t\t" << q.getText() << endl;
 
         const vector<Option>& options = q.getOptions();
 
         for (size_t i = 0; i < options.size(); i++) {
-            cout << i + 1 << ". " << options[i].getText() << endl;
+            cout<<"\t\t" << i + 1 << ". " << options[i].getText() << endl;
         }
 
         int input;
         cout << "Select an option (1-" << options.size() << "): ";
 
-        while (!(cin >> input) || input < 1 || input > options.size()) {
+        while (!(cin >> input) || input < 1 || (size_t)input > options.size()) {
             cin.clear();
             cin.ignore(1000, '\n');
             cout << "Invalid input. Try again: ";
@@ -489,7 +505,7 @@ void ScreeningSystem::run() {
         scorer.processResponse(response, profile);
     }
 
-    cout << "\n===== RESULTS =====\n";
+    cout << "\n\t\t\t===== RESULTS =====\n";
 
     printRawScores(profile);
     
@@ -501,25 +517,41 @@ void ScreeningSystem::run() {
     NormalizedProfile norm = normalizer.normalize(profile, maxScores);
     ClassificationResult result = classifier.classify(norm);
 
-    cout << "\nNormalized Scores:\n";
-    cout << "Pattern Hunter: " << norm.getPatternHunter() << endl;
-    cout << "Social Smart: " << norm.getSocialSmart() << endl;
-    cout << "Explorer: " << norm.getExplorer() << endl;
-    cout << "Stabilizer: " << norm.getStabilizer() << endl;
+    cout << "\n\t\tNormalized Scores:\n";
+    cout << "\t\t\tPattern Hunter: " << norm.getPatternHunter() <<"%"<< endl;
+    cout << "\t\t\tSocial Smart: " << norm.getSocialSmart() <<"%"<< endl;
+    cout << "\t\t\tExplorer: " << norm.getExplorer() <<"%"<< endl;
+    cout << "\t\t\tStabilizer: " << norm.getStabilizer() <<"%"<< endl;
 
-    cout << "\nProfile Type: " << result.profileType << endl;
-    cout << "Dominant Trait: " << traitToString(result.dominant) << endl;
-    cout << "Secondary Trait: " << traitToString(result.secondary) << endl;
+    cout << "\n\t\tProfile Type: " << result.profileType << endl;
+    cout << "\t\t\tDominant Trait: " << traitToString(result.dominant) << endl;
+    cout << "\t\t\tSecondary Trait: " << traitToString(result.secondary) << endl;
 
-    cout << "\nInterpretation:\n";
-    cout << interpreter.interpret(result) << endl;
+    cout << "\n\t\tInterpretation:\n";
+    cout <<"\t\t\t"<< interpreter.interpret(result) << endl;
 };
-
+void startScreening() {
+    int startChoice = 0;
+            cout << "\n\tWelcome to the Cognitive Screening System!\n";
+            cout << "\tYou have to answer the given questions to determine your cognitive profile.\n";
+            cout << "\tPress 1 to start the screening or 0 to exit: ";
+            while (!(cin >> startChoice) || (startChoice != 0 && startChoice != 1)) {
+                cin.clear();
+                cin.ignore(1000, '\n');
+                cout << "Invalid input. Please enter 1 to start or 0 to exit: ";
+            }
+            if (startChoice == 1) {
+                
+    
+            }
+    ScreeningSystem system;
+    system.run();
+        }
 
     int main()
 {
-    ScreeningSystem system;
-    system.run();
+    startScreening();
+    
     return 0;
 }
 
