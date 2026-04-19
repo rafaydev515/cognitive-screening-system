@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <fstream>
 #include <sstream>
+#include <iomanip>
 using namespace std;
 
 enum Trait {
@@ -267,18 +268,20 @@ class ClassificationEngine {
             return a.second > b.second;
         });
 
-    int count65 = 0, count55 = 0;
+ int count60 = 0, count35 = 0, count29 = 0;
     for (const auto& s : scores) {
-        if (s.second >= 65) count65++;
-        if (s.second >= 55) count55++;
-    }
+        if (s.second >= 60) count60++;  // clearly dominant
+        if (s.second >= 35) count35++;  // meaningfully elevated
+        if (s.second >= 29) count29++;  // present
+}
 
     string profileType;
-    if      (count65 >= 3) profileType = "Triad";
-    else if (count65 >= 1) profileType = "Dominant";
-    else if (count55 >= 2) profileType = "Dual";
-    else                   profileType = "Mixed";
 
+    if      (count60 >= 1) profileType = "Dominant"; // 1 trait clearly leads
+    else if (count35 >= 2) profileType = "Dual";     // 2 traits both elevated
+    else if (count29 >= 3) profileType = "Triad";    // spread across 3 traits
+    else                   profileType = "Mixed";    // no clear pattern
+    
     return {scores[0].first, scores[1].first, profileType};
 }
 };
@@ -317,66 +320,66 @@ public:
         Trait d = result.dominant;
         Trait s = result.secondary;
 
-        interpretation += "\nYour cognitive style: ";
+        interpretation += "\n\t\tYour cognitive style: ";
 
 // PH dominant
         if (d == PATTERN_HUNTER && s == SOCIAL_SMART)
-            interpretation += "Strategic Communicator — You combine logic with social awareness.";
+            interpretation += "\n\t\t\tStrategic Communicator — You combine logic with social awareness.";
 
         else if (d == PATTERN_HUNTER && s == EXPLORER)
-            interpretation += "Analytical Explorer — You seek patterns while exploring new ideas.";
+            interpretation += "\n\t\t\tAnalytical Explorer — You seek patterns while exploring new ideas.";
 
         else if (d == PATTERN_HUNTER && s == STABILIZER)
-            interpretation += "Structured Thinker — You value logic with stability.";
+            interpretation += "\n\t\t\tStructured Thinker — You value logic with stability.";
 
 // SS dominant
         else if (d == SOCIAL_SMART && s == PATTERN_HUNTER)
-            interpretation += "Empathic Analyst — You read people deeply and back it with sharp logical thinking.";
+            interpretation += "\n\t\t\tEmpathic Analyst — You read people deeply and back it with sharp logical thinking.";
 
         else if (d == SOCIAL_SMART && s == EXPLORER)
-            interpretation += "Adaptive Connector — You explore through people and interaction.";
+            interpretation += "\n\t\t\tAdaptive Connector — You explore through people and interaction.";
 
         else if (d == SOCIAL_SMART && s == STABILIZER)
-            interpretation += "Supportive Organizer — You balance people and structure.";
+            interpretation += "\n\t\t\tSupportive Organizer — You balance people and structure.";
 
 // EX dominant
         else if (d == EXPLORER && s == PATTERN_HUNTER)
-            interpretation += "Curious Investigator — You experiment freely but always search for the underlying logic.";
+            interpretation += "\n\t\t\tCurious Investigator — You experiment freely but always search for the underlying logic.";
 
         else if (d == EXPLORER && s == SOCIAL_SMART)
-            interpretation += "Creative Collaborator — You chase new ideas and bring others along with you.";
+            interpretation += "\n\t\t\tCreative Collaborator — You chase new ideas and bring others along with you.";
 
         else if (d == EXPLORER && s == STABILIZER)
-            interpretation += "Balanced Executor — You explore but maintain control and consistency.";
+            interpretation += "\n\t\t\tBalanced Executor — You explore but maintain control and consistency.";
 
 // ST dominant
         else if (d == STABILIZER && s == PATTERN_HUNTER)
-            interpretation += "Precise Planner — You build reliable systems grounded in deep analytical thinking.";
+            interpretation += "\n\t\t\tPrecise Planner — You build reliable systems grounded in deep analytical thinking.";
 
         else if (d == STABILIZER && s == SOCIAL_SMART)
-            interpretation += "Steady Supporter — You create safe, consistent environments where people feel secure.";
+            interpretation += "\n\t\t\tSteady Supporter — You create safe, consistent environments where people feel secure.";
 
         else if (d == STABILIZER && s == EXPLORER)
-            interpretation += "Cautious Innovator — You are open to new ideas but only move when the ground feels solid.";
+            interpretation += "\n\t\t\tCautious Innovator — You are open to new ideas but only move when the ground feels solid.";
 
         else
-            interpretation += "Unique combination of traits.";
+            interpretation += "\n\t\t\tUnique combination of traits.";
 
         // -------- Add trait-specific reinforcement --------
-        interpretation += "\n\nDominant Trait Insight: ";
+        interpretation += "\n\n\t\tDominant Trait Insight: ";
 
         switch(result.dominant) {
             case PATTERN_HUNTER:
-                interpretation += "You naturally analyze patterns and systems.";
+                interpretation += "\n\t\t\tYou naturally analyze patterns and systems.";
                 break;
             case SOCIAL_SMART:
-                interpretation += "You understand and navigate social dynamics effectively.";
+                interpretation += "\n\t\t\tYou understand and navigate social dynamics effectively.";
                 break;
             case EXPLORER:
-                interpretation += "You are driven by curiosity and experimentation.";
+                interpretation += "\n\t\t\tYou are driven by curiosity and experimentation.";
                 break;
             case STABILIZER:
-                interpretation += "You value consistency, structure, and reliability.";
+                interpretation += "\n\t\t\tYou value consistency, structure, and reliability.";
                 break;
         }
 
@@ -413,7 +416,7 @@ public:
                     currentOptions.clear();
                 }
                 string content = line.substr(4);  // removes "[Q] "
-                    int pos = content.find('|');
+                    size_t pos = content.find('|');
 
                     if (pos != string::npos)
                     currentquestiontext = content.substr(pos + 1);
@@ -518,6 +521,7 @@ void ScreeningSystem::run() {
     ClassificationResult result = classifier.classify(norm);
 
     cout << "\n\t\tNormalized Scores:\n";
+    cout << fixed << setprecision(2); // format to 2 decimal places
     cout << "\t\t\tPattern Hunter: " << norm.getPatternHunter() <<"%"<< endl;
     cout << "\t\t\tSocial Smart: " << norm.getSocialSmart() <<"%"<< endl;
     cout << "\t\t\tExplorer: " << norm.getExplorer() <<"%"<< endl;
@@ -542,10 +546,13 @@ void startScreening() {
             }
             if (startChoice == 1) {
                 
+                ScreeningSystem system;
+                system.run();
+                    }
+            else {
+                cout << "Exiting the program. Goodbye!\n";        
     
             }
-    ScreeningSystem system;
-    system.run();
         }
 
     int main()
