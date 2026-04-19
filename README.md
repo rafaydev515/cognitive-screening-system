@@ -138,7 +138,7 @@ Example Output
                         You have two strong cognitive drivers that shape your behavior.
 
                 Your cognitive style:
-                        Strategic Communicator ΓÇö You combine logic with social awareness.
+                        Strategic Communicator - You combine logic with social awareness.
 
                 Dominant Trait Insight:
                         You naturally analyze patterns and systems.
